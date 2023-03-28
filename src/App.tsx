@@ -97,14 +97,14 @@ function App() {
   };
 
   return (
-    <div className="h-full dark:bg-[#1E202A] w-full">
-      <section className="flex w-10/12 justify-between mx-auto">
-        <div className="font-bold">
+    <div className="min-h-screen py-4 dark:bg-[#1E202A] w-full pt-5">
+      <section className="flex flex-col md:flex-row w-10/12 justify-between mx-auto">
+        <div className="font-bold mb-5">
           <h1 className="text-3xl dark:text-white">Social Media Dashboard</h1>
           <p className="text-[#70768F] text-[14px]">Total Followers: 23,005</p>
         </div>
-        <div className="flex">
-          <p className="dark:text-white mr-5">Dark mode</p>
+        <div className="flex border-t-[1px] border-[#70768F] md:border-none justify-between">
+          <p className="text-[#70768F] font-bold mr-5 mt-5">Dark mode</p>
           <Switch
             onChange={handleThemeSwitch}
             checked={theme === "light"}
@@ -113,19 +113,20 @@ function App() {
             onHandleColor="#CBC7AE"
             checkedIcon={false}
             uncheckedIcon={false}
+            className="mt-5"
           />
         </div>
       </section>
-      <section className="grid grid-cols-4 gap-4 my-10 mx-auto w-10/12">
-        {dataSocialMedia.map((data) => {
-          return <CardSocialMedia data={data} />;
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-10 mx-auto w-10/12">
+        {dataSocialMedia.map((data, index) => {
+          return <CardSocialMedia key={index} data={data} />;
         })}
       </section>
       <section className="w-10/12 mx-auto my-5">
         <h2 className="mt-10 mb-5 text-[#70768F] font-bold text-2xl">Overwiew - Today</h2>
-        <div className="grid grid-cols-4 gap-4">
-          {dataOverview.map((data) => {
-            return <CardOverviewSocialMedia data={data} />;
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {dataOverview.map((data, index) => {
+            return <CardOverviewSocialMedia key={index} data={data} />;
           })}
         </div>
       </section>
